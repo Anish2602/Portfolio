@@ -5,7 +5,7 @@ export const site = {
     "I build event-driven backend systems and GPU-backed AI model-serving pipelines — FastAPI, Kafka, Kubernetes, on Azure & AWS.",
   // Production URL (used for OG tags, sitemap, robots).
   // Update this if you rename the Vercel domain or add a custom one.
-  url: "https://portfolio-seven-lilac-86wrjccips.vercel.app",
+  url: "https://anish-kumar-pf.vercel.app",
   description:
     "Portfolio of Anish Kumar — Backend & AI Infrastructure Engineer building microservice-based, event-driven systems and GPU-backed AI model-serving pipelines with FastAPI, Kafka, Kubernetes, Azure & AWS.",
   email: "anish.26022002@gmail.com",
