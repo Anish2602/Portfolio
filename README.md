@@ -4,7 +4,7 @@ Personal portfolio of **Anish Kumar**, Backend & AI Infrastructure Engineer — 
 
 Built with **Next.js 15 (App Router) · TypeScript · Tailwind CSS 4 · Framer Motion**, fully static (SSG), deployed on Vercel.
 
-> 🔗 **Live site:** _add your Vercel URL here after deploying_
+> 🔗 **Live site:** https://portfolio-seven-lilac-86wrjccips.vercel.app
 
 ---
 
