@@ -14,8 +14,7 @@ export const site = {
   resumeUrl: "/resume.pdf",
   social: {
     github: "https://github.com/Anish2602",
-    // TODO: confirm the exact LinkedIn handle
-    linkedin: "https://linkedin.com/in/anish-kumar",
+    linkedin: "https://linkedin.com/in/anish-kumar-240a961ba",
   },
   keywords: [
     "Anish Kumar",
