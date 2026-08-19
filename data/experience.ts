@@ -17,7 +17,7 @@ export const experience: Experience[] = [
     company: "Centific",
     role: "Associate Application Engineer",
     location: "Chennai, India",
-    period: "Oct 2024 – Present",
+    period: "Oct 2024 – Aug 2026",
     logo: "/logos/centific.svg",
     highlights: [
       "Designed and owned microservice-based backend APIs and PostgreSQL-backed services for Loop 1.0, an annotation platform later acquired by a customer in an ~$1M deal.",
