@@ -21,7 +21,13 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     label: "Event-Driven & Async",
-    skills: ["Kafka", "RabbitMQ", "Redis", "Event-driven architecture"],
+    skills: [
+      "Kafka",
+      "RabbitMQ",
+      "Redis",
+      "Azure Event Hub",
+      "Event-driven architecture",
+    ],
   },
   {
     label: "Databases & Caching",
@@ -34,7 +40,11 @@ export const skillGroups: SkillGroup[] = [
       "Azure",
       "Docker",
       "Kubernetes",
+      "AKS",
+      "Azure Container Registry",
       "Azure DevOps",
+      "Azure CLI",
+      "ARM API",
       "Git",
       "CI/CD",
     ],
@@ -50,11 +60,31 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
+    label: "Networking",
+    skills: ["VNet", "Private Endpoints", "Private DNS", "VNet Integration"],
+  },
+  {
     label: "Observability",
-    skills: ["Prometheus", "Grafana", "Logging", "Monitoring"],
+    skills: [
+      "Prometheus",
+      "Grafana",
+      "Azure Monitor",
+      "Application Insights",
+      "Log Analytics",
+      "Logging",
+      "Monitoring",
+    ],
   },
   {
     label: "Security",
-    skills: ["JWT", "OAuth", "Azure Key Vault", "HashiCorp Vault"],
+    skills: [
+      "JWT",
+      "OAuth",
+      "TLS",
+      "Azure Key Vault",
+      "HashiCorp Vault",
+      "CrowdStrike Falcon",
+      "Azure App Registrations",
+    ],
   },
 ];

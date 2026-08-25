@@ -10,7 +10,7 @@ export function Experience() {
     <Section id="experience" index="02" title="Experience">
       <ol className="relative space-y-8 border-l border-border pl-6 sm:pl-8">
         {experience.map((job, i) => (
-          <li key={job.company} className="relative">
+          <li key={`${job.company}-${job.role}`} className="relative">
             <span
               className="absolute -left-[31px] top-2 h-2.5 w-2.5 rounded-full bg-accent sm:-left-[39px]"
               aria-hidden
@@ -40,25 +40,67 @@ export function Experience() {
                     {job.location} · {job.period}
                   </p>
                 </div>
-                <ul className="mt-4 space-y-2">
-                  {job.highlights.map((highlight) => (
-                    <li
-                      key={highlight}
-                      className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
-                    >
-                      <span className="mt-1 font-mono text-accent" aria-hidden>
-                        ▹
-                      </span>
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
-                {job.tech && (
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {job.tech.map((tech) => (
-                      <Badge key={tech}>{tech}</Badge>
+                {job.tracks ? (
+                  <div className="mt-5 space-y-6">
+                    {job.tracks.map((track, ti) => (
+                      <div
+                        key={track.label}
+                        className={
+                          ti > 0 ? "border-t border-border pt-5" : undefined
+                        }
+                      >
+                        <p className="font-mono text-xs font-semibold uppercase tracking-wide text-accent">
+                          {track.label}
+                        </p>
+                        <ul className="mt-3 space-y-2">
+                          {track.highlights.map((highlight) => (
+                            <li
+                              key={highlight}
+                              className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
+                            >
+                              <span
+                                className="mt-1 font-mono text-accent"
+                                aria-hidden
+                              >
+                                ▹
+                              </span>
+                              {highlight}
+                            </li>
+                          ))}
+                        </ul>
+                        {track.tech && (
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            {track.tech.map((tech) => (
+                              <Badge key={tech}>{tech}</Badge>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     ))}
                   </div>
+                ) : (
+                  <>
+                    <ul className="mt-4 space-y-2">
+                      {job.highlights?.map((highlight) => (
+                        <li
+                          key={highlight}
+                          className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
+                        >
+                          <span className="mt-1 font-mono text-accent" aria-hidden>
+                            ▹
+                          </span>
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                    {job.tech && (
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {job.tech.map((tech) => (
+                          <Badge key={tech}>{tech}</Badge>
+                        ))}
+                      </div>
+                    )}
+                  </>
                 )}
               </Card>
             </Reveal>
