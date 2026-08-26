@@ -12,6 +12,7 @@ export const site = {
   phone: "+91 7980737358",
   location: "Chennai, India",
   resumeUrl: "/resume.pdf",
+  resumeDevOpsUrl: "/resume-devops.pdf",
   social: {
     github: "https://github.com/Anish2602",
     linkedin: "https://linkedin.com/in/anish-kumar-240a961ba",

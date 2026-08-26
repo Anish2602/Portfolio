@@ -35,7 +35,7 @@ export const featuredProjects: Project[] = [
     description:
       "Event-driven platform for async workloads with Kafka producers/consumers, retry handling, and fault-tolerant execution. Redis caching, PostgreSQL persistence, and Prometheus/Grafana monitoring with queue metrics.",
     tech: ["FastAPI", "Kafka", "Redis", "PostgreSQL", "Docker", "Grafana"],
-    // TODO: add the GitHub URL once this repo is public.
+    github: "https://github.com/Anish2602/Distributed-Task-Platform",
   },
 ];
 

@@ -1,6 +1,7 @@
-import { ArrowDown, FileDown, Mail } from "lucide-react";
+import { ArrowDown, Mail } from "lucide-react";
 import { site } from "@/data/site";
 import { Reveal } from "@/components/reveal";
+import { ResumeMenu } from "@/components/resume-menu";
 import { Terminal } from "@/components/terminal";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -50,13 +51,9 @@ export function Hero() {
                 <Mail className="h-4 w-4" aria-hidden />
                 Get in touch
               </a>
-              <a
-                href={site.resumeUrl}
-                className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
-              >
-                <FileDown className="h-4 w-4" aria-hidden />
-                Download Résumé
-              </a>
+              <ResumeMenu
+                triggerClassName={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+              />
             </div>
           </Reveal>
         </div>

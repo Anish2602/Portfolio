@@ -102,7 +102,8 @@ export function Terminal() {
           { kind: "accent", text: "  contact     → reach me" },
           { kind: "accent", text: "  interview   → 10 questions recruiters ask me" },
           { kind: "accent", text: "  ask <n>     → my answer to question n" },
-          { kind: "accent", text: "  resume      → open my résumé" },
+          { kind: "accent", text: "  resume      → open my résumé (backend & AI)" },
+          { kind: "accent", text: "  resume devops → open my DevOps résumé" },
           { kind: "accent", text: "  github      → open my GitHub" },
           { kind: "accent", text: "  theme       → toggle light/dark" },
           { kind: "accent", text: "  sudo hire-me · clear" }
@@ -137,6 +138,10 @@ export function Terminal() {
       case "resume":
         push({ kind: "accent", text: "opening resume.pdf…" });
         window.open(site.resumeUrl, "_blank");
+        break;
+      case "resume devops":
+        push({ kind: "accent", text: "opening resume-devops.pdf…" });
+        window.open(site.resumeDevOpsUrl, "_blank");
         break;
       case "github":
         push({ kind: "accent", text: "opening GitHub…" });

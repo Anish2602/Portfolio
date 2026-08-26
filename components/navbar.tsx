@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { nav, site } from "@/data/site";
 import { CommandPalette } from "@/components/command-palette";
+import { ResumeMenu } from "@/components/resume-menu";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
@@ -61,12 +62,10 @@ export function Navbar() {
               {item.label}
             </a>
           ))}
-          <a
-            href={site.resumeUrl}
-            className="ml-2 rounded-md border border-border px-3 py-2 font-mono text-sm transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-          >
-            Résumé
-          </a>
+          <ResumeMenu
+            showIcon={false}
+            triggerClassName="ml-2 rounded-md border border-border px-3 py-2 font-mono text-sm transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          />
           <button
             onClick={() => setPaletteOpen(true)}
             className="ml-1 flex items-center gap-1.5 rounded-md border border-border px-2.5 py-2 font-mono text-xs text-muted-foreground transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
@@ -107,10 +106,21 @@ export function Navbar() {
             ))}
             <a
               href={site.resumeUrl}
+              target="_blank"
+              rel="noopener"
               onClick={() => setOpen(false)}
               className="rounded-md px-3 py-2 font-mono text-sm text-accent"
             >
-              Résumé
+              Résumé — Backend & AI
+            </a>
+            <a
+              href={site.resumeDevOpsUrl}
+              target="_blank"
+              rel="noopener"
+              onClick={() => setOpen(false)}
+              className="rounded-md px-3 py-2 font-mono text-sm text-accent"
+            >
+              Résumé — DevOps
             </a>
           </div>
         </div>
