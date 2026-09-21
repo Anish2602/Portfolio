@@ -37,6 +37,13 @@ export const featuredProjects: Project[] = [
     tech: ["FastAPI", "Kafka", "Redis", "PostgreSQL", "Docker", "Grafana"],
     github: "https://github.com/Anish2602/Distributed-Task-Platform",
   },
+  {
+    name: "AI Personalized News Feed: Semantic Ranking & Recommendation Platform",
+    description:
+      "Personalized news platform with RSS ingestion, semantic deduplication (Qdrant), and a transparent multi-signal ranking engine (semantic, freshness, popularity, diversity, interest match). LLM-powered summarization and topic classification with graceful fallbacks, Redis-cached cursor pagination, async Celery workers, React frontend, and full CI/CD.",
+    tech: ["FastAPI", "PostgreSQL", "Redis", "Celery", "Qdrant", "Docker", "React"],
+    github: "https://github.com/Anish2602/ai-personalized-news-feed",
+  },
 ];
 
 // Secondary project cards, sourced from github.com/Anish2602 public repos.
