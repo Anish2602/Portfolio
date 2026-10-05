@@ -10,28 +10,44 @@ import { ScrollProgress } from "@/components/scroll-progress";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 
-const SECTION_IDS = ["about", "experience", "projects", "skills", "contact"];
+// Every section in page order. Education isn't in the nav, but it still has to
+// "own" its scroll range so the previous nav item doesn't stay highlighted.
+const SECTION_IDS = ["about", "experience", "projects", "skills", "education", "contact"];
+const NAV_IDS = new Set(nav.map((n) => n.href.slice(1)));
 
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
   const [paletteOpen, setPaletteOpen] = React.useState(false);
   const [active, setActive] = React.useState<string | null>(null);
 
-  // Scrollspy: highlight the section currently in view.
+  // Scrollspy: the active section is the last one whose top has passed ~35% of the viewport.
   React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        }
-      },
-      { rootMargin: "-40% 0px -55% 0px" }
-    );
-    for (const id of SECTION_IDS) {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    }
-    return () => observer.disconnect();
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const line = window.innerHeight * 0.35;
+      let current: string | null = null;
+      for (const id of SECTION_IDS) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= line) current = id;
+      }
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 4;
+      if (atBottom) current = "contact";
+      setActive(current && NAV_IDS.has(current) ? current : null);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
 
   const linkClass = (href: string) => {
