@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { site } from "~/data/site";
 import { interviewQA } from "~/data/interview";
-import { featuredProjects } from "~/data/projects";
+import { featuredProjects, flagshipProject } from "~/data/projects";
 import { skillGroups } from "~/data/skills";
 
 type Line = { kind: "cmd" | "out" | "accent"; text: string };
@@ -120,7 +120,7 @@ function run(raw: string) {
       break;
     case "projects":
       push(
-        ...featuredProjects.map((p): Line => ({ kind: "out", text: `  ▹ ${p.name}` })),
+        ...[flagshipProject, ...featuredProjects].map((p): Line => ({ kind: "out", text: `  ▹ ${p.name}` })),
         { kind: "accent", text: "  scroll down for details ↓" },
       );
       break;

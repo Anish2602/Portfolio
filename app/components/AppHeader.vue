@@ -7,26 +7,40 @@ const paletteOpen = usePalette();
 const menuOpen = ref(false);
 const active = ref<string | null>(null);
 
-const sectionIds = nav.map((n) => n.href.slice(1));
-let io: IntersectionObserver | null = null;
+// Every section in page order (Education isn't in the nav, but it still has to
+// "own" the scroll range so the previous nav item doesn't stay highlighted).
+const sectionIds = ["about", "experience", "projects", "skills", "education", "contact"];
+const navIds = new Set(nav.map((n) => n.href.slice(1)));
+let raf = 0;
 
-onMounted(() => {
-  // Scrollspy: highlight whichever section crosses the middle of the viewport.
-  io = new IntersectionObserver(
-    (entries) => {
-      for (const e of entries) if (e.isIntersecting) active.value = e.target.id;
-    },
-    { rootMargin: "-45% 0px -50% 0px" },
-  );
+// Scrollspy: the active section is the last one whose top has passed ~35% of the viewport.
+function updateActive() {
+  raf = 0;
+  const line = window.innerHeight * 0.35;
+  let current: string | null = null;
   for (const id of sectionIds) {
     const el = document.getElementById(id);
-    if (el) io.observe(el);
+    if (el && el.getBoundingClientRect().top <= line) current = id;
   }
+  const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+  if (atBottom) current = "contact";
+  active.value = current && navIds.has(current) ? current : null;
+}
+function onScroll() {
+  if (!raf) raf = requestAnimationFrame(updateActive);
+}
+
+onMounted(() => {
+  updateActive();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
   window.addEventListener("keydown", onKey);
 });
 onBeforeUnmount(() => {
-  io?.disconnect();
+  window.removeEventListener("scroll", onScroll);
+  window.removeEventListener("resize", onScroll);
   window.removeEventListener("keydown", onKey);
+  if (raf) cancelAnimationFrame(raf);
 });
 
 function onKey(e: KeyboardEvent) {

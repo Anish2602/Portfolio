@@ -1,9 +1,47 @@
 export type Project = {
   name: string;
+  tagline?: string;
   description: string;
+  keyPoints?: string[];
   tech: string[];
   github?: string;
   live?: string;
+  video?: string;
+};
+
+// The headline project — rendered as a large card above the featured grid.
+export const flagshipProject: Project = {
+  name: "Multi-Workspace AI Document Assistant",
+  tagline: "RAG + LLM tool calling with strict workspace isolation",
+  description:
+    "A full-stack AI web app where users upload documents into separate workspaces and chat with an assistant that answers only from the active workspace's documents. Every answer is cited, it says \"I don't know\" when the documents don't cover something, and it can take actions through validated tool calls.",
+  keyPoints: [
+    "Multi-tenant RAG on one shared vector store: every workspace's chunks live in a single pgvector table, and isolation is enforced inside the SQL vector query, so one workspace can never retrieve another's content. Tests prove it.",
+    "Grounded, cited answers: hybrid vector + keyword search fused with RRF, a relevance threshold calibrated on real data, server-checked citations, and honest \"I don't know\" refusals.",
+    "Safe LLM tool calling: an agent loop that saves tasks, posts Discord notifications and runs multi-step searches, with schema-validated arguments, per-message limits, a full audit log, and resistance to prompt injection.",
+    "Reliable by design: token streaming over SSE, automatic Gemini → Groq model fallback, questions saved before the AI is called so failed answers can be retried, and duplicate uploads ignored.",
+    "Secure accounts: sign up with email and username, sign in with either. Passwords are hashed with argon2, and sessions use httpOnly JWT cookies.",
+    "Observability: a per-workspace dashboard for latency, token usage, retrieval hit rate and tool success or failure, plus a retrieval-debug view showing exactly which passages an answer used.",
+    "Production-ready: 80+ automated tests and GitHub Actions CI that builds and boots the production Docker image, deployed on Render + Neon entirely on free tiers.",
+  ],
+  tech: [
+    "Python",
+    "FastAPI",
+    "React",
+    "TypeScript",
+    "PostgreSQL",
+    "pgvector",
+    "Gemini",
+    "Groq",
+    "RAG",
+    "LLM Tool Calling",
+    "Docker",
+    "GitHub Actions",
+    "Render",
+  ],
+  github: "https://github.com/Anish2602/multi-workspace-doc-assistant",
+  live: "https://multi-workspace-doc-assistant-tder.onrender.com",
+  video: "https://youtu.be/Rc-YCUEvTjQ",
 };
 
 export const featuredProjects: Project[] = [
