@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anish-kumar-pf.vercel.app/sitemap.xml
